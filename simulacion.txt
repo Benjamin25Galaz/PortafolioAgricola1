@@ -1,0 +1,25 @@
+Visa
+
+Número de tarjeta: 4051885600446623
+CVV: 123
+Fecha de expiración: Cualquier fecha futura (por ejemplo, 12/26).
+
+
+Mastercard
+
+Número de tarjeta: 5186059559590569
+CVV: 123
+Fecha de expiración: Cualquier fecha futura.
+
+American Express
+
+Número de tarjeta: 371109135681522
+CVV: 1234
+Fecha de expiración: Cualquier fecha futura.
+
+
+Diners Club
+
+Número de tarjeta: 3610051609145
+CVV: 123
+Fecha de expiración: Cualquier fecha futura.

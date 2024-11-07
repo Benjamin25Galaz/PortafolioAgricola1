@@ -1,0 +1,54 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <style>
+      
+        </style>
+    </head>
+    <body>
+
+
+        <div style="max-width: 30cm; margin: auto; margin-top: 35px; margin-bottom: 35px;">
+
+            <h1 class="section-title text-center">Lista de Donaciones</h1>
+
+            <div class="container mt-4" style="max-height: 500px; overflow-y: auto; border: 3px solid #66CDAA; border-radius: 25px; ">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID de Donación</th>
+                            <th>Comuna</th>
+                            <th>Tipo de Árbol</th>
+                            <th>Cantidad</th>
+                            <th>Valor Donacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donacion in donaciones %}
+                        <tr>
+                            <td>{{ donacion.id }}</td>
+                            <td>{{ donacion.comuna }}</td>
+                            <td>{{ donacion.tipo_arbol }}</td>
+                            <td>{{ donacion.cantidad }}</td>
+                            <td>${{ donacion.valor_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+               
+    
+    
+
+
+            </div>
+            <br>
+            <a href="{% url 'superuser' %}" class="btn btn-custom">Al Panel Admin</a>
+        </div>
+        
+        
+    </body>
+</html>  
+{% endblock %}

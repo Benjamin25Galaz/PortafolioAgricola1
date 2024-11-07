@@ -1,0 +1,23 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+  <body>
+    {% extends 'base_generic.html' %}
+
+
+    {% block content %}
+
+    <div class="masthead container d-flex align-items-center flex-column">
+    <p>Logged out!</p>
+    <a href="{% url 'acceder' %}">click here to login again.</a>
+
+    </div>
+    {% endblock %}
+
+  </body>
+</html>
+
+{% endblock %}

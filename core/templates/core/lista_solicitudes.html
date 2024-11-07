@@ -1,0 +1,119 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <style>
+            /* Hacer la tabla flexible */
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+            .table th, .table td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            @media (max-width: 768px) {
+                /* Convertir filas en bloques para pantallas pequeñas */
+                .table, .table thead, .table tbody, .table th, .table td, .table tr {
+                    display: block;
+                    width: 100%;
+                }
+                
+                .table thead tr {
+                    display: none; /* Ocultar encabezado en pantallas pequeñas */
+                }
+                
+                .table tr {
+                    margin-bottom: 1rem;
+                    border-bottom: 2px solid #ddd;
+                }
+                
+                .table td {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 8px 0;
+                }
+                
+                /* Etiquetas de datos para celdas en pantallas pequeñas */
+                .table td::before {
+                    content: attr(data-label);
+                    font-weight: bold;
+                    color: #2a9d8f;
+                    margin-right: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div style="max-width: 30cm; margin: auto; margin-top: 35px; margin-bottom: 35px;">
+            <h2 class="section-title text-center">🌿Lista de Solicitudes🌿</h2>
+            <div class="container mt-4" style="max-height: 300px; overflow-y: auto; border: 3px solid #66CDAA; border-radius: 25px;">
+                
+                <!-- Contenedor de tabla responsiva -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Tipo de Solicitud</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th>Comuna</th>
+                                <th>Fecha de Retiro</th>
+                                <th>Cantidad de Árboles</th>
+                                <th>Cantidad de Litros</th>
+                                <th>Comentarios</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for solicitud in solicitudes %}
+                            <tr>
+                                <td data-label="Nombre">{{ solicitud.nombre }}</td>
+                                <td data-label="Apellido">{{ solicitud.apellido }}</td>
+                                <td data-label="Tipo de Solicitud">{{ solicitud.tipo_solicitud }}</td>
+                                <td data-label="Teléfono">{{ solicitud.telefono }}</td>
+                                <td data-label="Correo">{{ solicitud.correo }}</td>
+                                <td data-label="Dirección">{{ solicitud.direccion }}</td>
+                                <td data-label="Comuna">{{ solicitud.comuna }}</td>
+                                <td data-label="Fecha de Retiro">{{ solicitud.fecha_retiro }}</td>
+                                <td data-label="Cantidad de Árboles">{{ solicitud.cantidad_arboles }}</td>
+                                <td data-label="Cantidad de Litros">{{ solicitud.cantidad_litros }}</td>
+                                <td data-label="Comentarios">{{ solicitud.comentarios }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="11">No hay solicitudes disponibles.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+            <br>
+            <a href="{% url 'superuser' %}" class="btn btn-custom">Ir al Panel Admin</a>
+        </div>
+        
+        
+        
+       
+    </body>
+</html>  
+{% endblock %}
+
+
+
+

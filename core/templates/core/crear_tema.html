@@ -1,0 +1,112 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+
+      .sidebar, .content {
+          padding: 10px;
+          box-sizing: border-box;
+      }
+
+      .container {
+          display: flex;
+          max-width: 1200px;
+          margin: 0 auto; /* Centra el contenedor */
+      }
+
+      .sidebar {
+          flex: 1; /* Hace las barras laterales del mismo tamaño */
+          background-color: #e0e0e0;
+          text-align: center;
+          margin: 0 20px; /* Agrega margen lateral para separar las barras laterales del contenido */
+      }
+
+      .sidebar img {
+          width: 100%; /* Establece el ancho a 100% del contenedor de la barra lateral */
+          height: 600px; /* Define una altura fija que puedes ajustar */
+          object-fit: cover; /* Mantiene la proporción de la imagen y recorta si es necesario */
+      }
+
+      .content {
+          flex: 2; /* Duplica el tamaño del contenido central */
+          background-color: #ffffff; /* Color de fondo del contenido */
+          border-radius: 10px;
+          padding: 20px; /* Espaciado interno */
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Centra los elementos del formulario */
+      }
+
+      .button-container {
+          display: flex; /* Utiliza flexbox para alinear los botones */
+          justify-content: center; /* Centra los botones */
+          gap: 10px; /* Espacio entre los botones */
+          margin-top: 20px; /* Espacio superior para separar de otros elementos */
+      }
+
+      button {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          /* Ajusta estilos si es necesario */
+      }
+
+      @media (max-width: 768px) {
+          .container {
+              flex-direction: column;
+          }
+
+          .sidebar {
+              flex: none;
+              width: 100%;
+              margin: 10px 0; /* Espacio entre las secciones en vista móvil */
+          }
+
+          .content {
+              width: 100%;
+              margin: 10px 0; /* Espacio entre las secciones en vista móvil */
+          }
+      }
+    </style>
+  </head>
+  
+  <body>
+
+    <br>
+    {% load static %}
+    <div class="container my-5">
+        <div class="sidebar">
+            <img src="{% static 'core/img/nature.jpg' %}" alt="Publicidad izquierda">
+        </div>
+
+        <div class="content border rounded-4 shadow p-4">
+            <h1 class="section-title text-center">Crear Discusión</h1>
+            <div class="container mt-4 d-flex justify-content-center">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-custom">Crear Discusión</button>
+                        <a href="{% url 'foro' %}" class="btn btn-custom">Volver al Foro</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <img src="{% static 'core/img/publicidad.jpg' %}" alt="Publicidad derecha">
+        </div>
+    </div>  
+    <br>
+  </body>
+</html>  
+{% endblock %}

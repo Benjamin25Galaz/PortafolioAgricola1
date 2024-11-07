@@ -1,0 +1,58 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en"></html>
+<body>
+
+
+
+
+    <div style="max-width: 30cm; margin: auto; margin-top: 35px; margin-bottom: 35px;">
+        <h1 class="section-title text-center">Historial de Compras</h1>
+    
+        <div class="container mt-4" style="max-height: 500px; overflow-y: auto; border: 3px solid #66CDAA; border-radius: 25px;">
+            {% if compras_totales %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Fecha de Compra</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total de Compra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in compras_totales %}
+                        {% for producto in item.compra.compraproducto_set.all %}
+                            <tr>
+                                {% if forloop.first %}
+                                <td rowspan="{{ item.compra.compraproducto_set.count }}">{{ item.compra.usuario.username }}</td>
+                                <td rowspan="{{ item.compra.compraproducto_set.count }}">{{ item.compra.fecha }}</td>
+                                {% endif %}
+                                <td>{{ producto.producto.nombre }}</td>
+                                <td>{{ producto.cantidad }}</td>
+                                <td>${{ producto.producto.precio }}</td>
+                                {% if forloop.first %}
+                                <td rowspan="{{ item.compra.compraproducto_set.count }}"><strong>${{ item.total }}</strong></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-center">No hay compras registradas.</p>
+            {% endif %}
+        </div>
+        <br>
+        <a href="{% url 'superuser' %}" class="btn btn-custom">Ir al Panel Admin</a>
+    </div>
+    
+    
+
+</body>
+</html>  
+{% endblock %}

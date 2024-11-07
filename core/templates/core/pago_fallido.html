@@ -1,0 +1,16 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<body>
+    <div class="container">
+        <h1>Pago Fallido</h1>
+        <p>Lamentablemente, el pago no se ha podido completar.</p>
+        <p>Por favor, verifica tu método de pago o intenta nuevamente.</p>
+        <a href="{% url 'home' %}" class="btn">Volver</a>
+    </div>
+</body>
+</html>
+{% endblock %}

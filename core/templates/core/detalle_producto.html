@@ -1,0 +1,57 @@
+{% extends "core/base_generic.html" %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <body>
+
+
+        <!-- Contenedor para el texto educativo y los botones -->
+   
+
+      
+
+     
+        <div class="container my-5">
+          <div class="row">
+              <!-- Imagen del producto -->
+              <div class="col-lg-6 col-md-12">
+                  <div class="d-flex justify-content-center">
+                      <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid">
+                  </div>
+              </div>
+
+              <!-- Detalles del producto -->
+              <div class="col-lg-6 col-md-12">
+                  <h1 class="product-title">{{ producto.nombre }}</h1>
+                  <p class="text-success fw-bold">Precio: {{ producto.precio }}</p>
+
+                  <p class="product-description">
+                    Descripción: {{ producto.descripcion }}
+                  </p>
+
+                  <!-- Selección de cantidad -->
+                  <div class="mb-4">
+                      <label for="cantidad" class="form-label">Stock: {{ producto.stock }}</label>
+                      
+                  </div>
+
+                  <!-- Botón añadir al carrito -->
+                  <a class="btn btn-custom" href="{% url 'listar_productos' %}">Volver a la lista</a>
+                  <div class="mt-4">
+                    <a 
+                        class="btn btn-custom" 
+                        href="{% url 'Add' producto.id %}">
+                        agregar al carrito
+                    </a>
+                    
+                </div>
+                  <!--    -->
+              </div>
+          </div>
+        </div>
+
+    </body>
+</html>
+{% endblock %}
