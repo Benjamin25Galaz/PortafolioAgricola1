@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lw68uu39%-$*$@@m#c6_&acf%ji23gu4ja#^79o7mhb+g4&yb!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecoagricola.pythonanywhere.com']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    
+
 ]
 LOGIN_URL = '/login/'
 

@@ -104,10 +104,10 @@ def register(request):
                     last_name=apellido
                 )
                 user.save()
-                
+
                 # Autenticar y loguear al usuario después de registrarse
-                from django.contrib.auth import login
-                login(request, user)
+                backend = 'core.authentication_backends.EmailBackend'
+                login(request, user, backend=backend)  # Especifica el backend al iniciar sesión
 
                 return redirect('home')  # Redirige a la página principal después del registro
     else:
@@ -124,14 +124,14 @@ def solicitudes(request):
 
 def superurser(request):
     return render(request, 'core/superuser.html')
-    
+
 
 def solicitudes(request):
     if request.method == 'POST':
         form = SolicitudForm(request.POST)
         if form.is_valid():
             form.save()  # Guarda la solicitud en la base de datos
-            return redirect('solicitudes')  
+            return redirect('solicitudes')
     else:
         form = SolicitudForm()
 
@@ -213,7 +213,7 @@ def acceder(request):
 
         # Autenticar al usuario usando el correo como nombre de usuario
         usuario = authenticate(request, username=correo_electronico, password=contrasena)
-        
+
         # Verificar si la autenticación fue exitosa
         if usuario is not None:
             login(request, usuario)
@@ -256,7 +256,7 @@ def agregar_producto(request, producto_id):
 def eliminar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = get_object_or_404(Producto, id=producto_id)
-    
+
     # Obtener la cantidad de este producto en el carrito antes de eliminarlo
     cantidad_en_carrito = carrito.obtener_cantidad(producto)
 
@@ -266,7 +266,7 @@ def eliminar_producto(request, producto_id):
     # Devolver el stock a la tienda
     producto.stock += cantidad_en_carrito
     producto.save()
-    
+
     messages.success(request, f'{producto.nombre} ha sido eliminado del carrito y el stock ha sido actualizado.')
     return redirect("morstrar_carrito")  # Cambiar por el nombre que corresponda
 
@@ -336,7 +336,7 @@ def iniciar_pago(request):
         buy_order='orden123',
         session_id='sesion123',
         amount=10000,
-        return_url='http://127.0.0.1:8000/webpay/retorno'
+        return_url='https://ecoagricola.pythonanywhere.com/webpay/retorno'
     )
     return redirect(response['url'] + '?token_ws=' + response['token'])
 
@@ -350,12 +350,12 @@ def retorno_pago(request):
     else:
         # Error en el pago
         return render(request, 'core/pago_fallido.html', {'response': response})
-    
+
 @login_required(login_url='acceder')
 def finalizar_compra(request):
     if request.user.is_authenticated:
         carrito = Carrito(request)
-        
+
         # Verificar si el carrito no está vacío
         if not carrito.carrito:
             return redirect('carrito')  # O una página que desees si el carrito está vacío
@@ -373,12 +373,12 @@ def finalizar_compra(request):
         carrito.limpiar()  # Vacía el carrito
         return redirect('home')
  # Redirige al historial de compras # Redirige al historial de compras después de la compra
-    
+
 
 @login_required(login_url='acceder')
 def historial_compras(request):
     compras = Compra.objects.all()
-    
+
     # Crear una lista para almacenar cada compra con su total
     compras_totales = []
     for compra in compras:
@@ -387,7 +387,7 @@ def historial_compras(request):
             'compra': compra,
             'total': total_compra,
         })
-        
+
     return render(request, 'core/historial_compras.html', {'compras_totales': compras_totales})
 
 

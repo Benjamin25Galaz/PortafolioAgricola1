@@ -18,15 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}"> <!-- Enlace al archivo CSS -->
-    
-    
+
+
 
 
   </head>
 
   <body>
-    
-    <!-- Carrusel -->  
+
+    <!-- Carrusel -->
     {% load static %} <!-- Cargar archivos estáticos   style="max-width: 800px; margin: auto; margin-top: 35px;" -->
 
 
@@ -72,13 +72,13 @@
       </div>
     </div>
 
-      
-  
+
+
     </div>
 
-    
 
-    <!-- Sección de Compra de Productos Agrícolas -->    
+
+    <!-- Sección de Compra de Productos Agrícolas -->
     <section id="productos" class=" py-5">
       <div class="col-12">
         <h2 class="section-title text-center">Tienda de Productos Agrícolas</h2>
@@ -90,7 +90,7 @@
             <br>
             <h5 class="sub-title">Herramientas Agrícolas</h5>
             <p class="">Aqui encontraras todo tipo de herramientas para el trabajo agrícola.</p>
-            <a class="btn-custom" href="{% url 'catalogo' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
+            <a class="btn-custom" href="{% url 'listar_productos' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
           </div>
           <!-- Producto 2 -->
           <div class="col-md-4 text-center producto">
@@ -99,7 +99,7 @@
             <br>
             <h5 class="sub-title">Semillas de Calidad</h5>
             <p>Semillas certificadas y orgánicas para tus cultivos. Desde hortalizas hasta árboles.</p>
-            <a class="btn-custom" href="{% url 'catalogo' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
+            <a class="btn-custom" href="{% url 'listar_productos' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
           </div>
           <!-- Producto 3 -->
           <div class="col-md-4 text-center producto">
@@ -108,32 +108,32 @@
             <br>
             <h5 class="sub-title">Tierra de Hoja</h5>
             <p>Enriquece tu suelo con tierra de hoja de alta calidad para mejorar el rendimiento de tus cultivos.</p>
-            <a class="btn-custom" href="{% url 'catalogo' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
+            <a class="btn-custom" href="{% url 'listar_productos' %}" role="button" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">🛒 Ir de compras</a>   <!-- Si prefieres mantener el estilo del botón: -->
           </div>
         </div>
       </div>
     </section>
 
 
-   
-
-    
-    
 
 
 
-    
+
+
+
+
+
 
 
     <!-- Sección de Solicitudes de Retiro -->
     <!-- Sección de Solicitudes de Retiro -->
     <!-- Sección de Solicitudes de Retiro -->
     <!-- Sección de Solicitudes de Retiro -->
-    
+
     <section id="solicitudes-retiro" class="py-5 solicitudes-retiro-section">
       <div class="container">
         <div class="row justify-content-center align-items-center">
-          
+
           <!-- Imagen importante a la izquierda -->
           <div class="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">
             <div class="important-image">
@@ -141,14 +141,14 @@
             </div>
             <h3 style="color: #66CDAA; margin-top: 10px;">Árboles 🌳</h3>
           </div>
-          
+
           <!-- Contenido central -->
           <div class="col-lg-6 col-md-8 text-center">
             <h2 class="section-title">SOLICITUDES DE RETIRO</h2>
             <p class="text-education">Contribuye al reciclaje y ayuda al planeta</p>
-            <a class="btn-custom" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;" href="" role="button"> 🌳 Ir al sitio 💧</a>  
+            <a class="btn-custom" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;" href="{% url 'solicitudes' %}" role="button"> 🌳 Ir al sitio 💧</a>
           </div>
-          
+
           <!-- Imagen importante a la derecha -->
           <div class="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">
             <div class="important-image">
@@ -156,27 +156,31 @@
             </div>
             <h3 style="color: #66CDAA; margin-top: 10px;">Aguas de Piscinas 💧</h3>
           </div>
-          
+
         </div>
       </div>
     </section>
-  
-    
+
+
 
     <!-- Sección Foro de Ideas -->
     <!-- Sección Foro de Ideas -->
-    <section id="foro" class="py-5 foro-section">
-      <div class="text-center">
-        <h2 class="section-title">Foro de Ideas</h2>
-        <div class="content-wrapper">
-          <img src="{% static 'core/img/comunidad.jpg' %}" alt="Foro de Ideas" class="img-fluid foro-image">
-          <div class="overlay-content">
-            <p class="foro-p">Comparte tus ideas y proyectos para mejorar el medio ambiente. ¡Juntos podemos hacer más!</p>
-            <button class="btn btn-custom" href="#foro" style=" color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;"> Ir al Foro  🙂💬</button>
-          </div>
-        </div>
+<section id="foro" class="py-5 foro-section">
+  <div class="text-center">
+    <h2 class="section-title">Foro de Ideas</h2>
+    <div class="content-wrapper">
+      <img src="{% static 'core/img/comunidad.jpg' %}" alt="Foro de Ideas" class="img-fluid foro-image">
+      <div class="overlay-content">
+        <p class="foro-p">Comparte tus ideas y proyectos para mejorar el medio ambiente. ¡Juntos podemos hacer más!</p>
+        <a href="{% url 'foro' %}">
+          <button class="btn btn-custom" style="color: white; font-weight: bold; border: none; border-radius: 25px; padding: 10px 20px; font-size: 1rem; transition: background-color 0.3s ease; text-decoration: none;">
+            Ir al Foro 🙂💬
+          </button>
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- Sección de Nosotros -->
     <section id="nosotros" class="py-5">
@@ -184,7 +188,7 @@
         <div class="text-center">
           <h2 class="section-title">Nosotros</h2>
           <div class="row justify-content-center">
-            
+
             <!-- Misión -->
             <div class="col-md-4 mb-4">
               <div class="card shadow-lg p-4  rounded card-custom">
@@ -195,7 +199,7 @@
                 <p>Con tu apoyo, buscamos plantar árboles y restaurar ecosistemas naturales. Cada donación ayuda a construir un futuro verde y sostenible.</p>
               </div>
             </div>
-            
+
             <!-- Visión -->
             <div class="col-md-4 mb-4">
               <div class="card shadow-lg p-4  rounded card-custom">
@@ -206,7 +210,7 @@
                 <p>Queremos ser líderes en la restauración ambiental y la promoción de prácticas agrícolas sostenibles, beneficiando a nuestras comunidades y al planeta.</p>
               </div>
             </div>
-            
+
             <!-- Valores -->
             <div class="col-md-4 mb-4">
               <div class="card shadow-lg p-4  rounded card-custom">
@@ -217,13 +221,13 @@
                 <p>Nos basamos en el compromiso con la sostenibilidad, la responsabilidad ambiental y el respeto por la naturaleza en todas nuestras iniciativas.</p>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
     </section>
 
-   
+
   </body>
 </html>
 {% endblock %}
